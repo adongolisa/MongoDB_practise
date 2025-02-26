@@ -5,10 +5,10 @@ This project involves setting up a MongoDB database named `library`, creating a 
 
 ---
 ##  Setup Instructions
-### **1️ Install MongoDB**
+### **1 Install MongoDB**
 Ensure you have MongoDB installed on your system. If not, download and install it from [MongoDB Official Site](https://www.mongodb.com/try/download/community).
 
-### **2️ Start MongoDB**
+### **2 Start MongoDB**
 Start the MongoDB service:
 ```sh
 mongod
@@ -18,7 +18,7 @@ Then, open another terminal and start the MongoDB shell:
 mongosh
 ```
 
-### **3️ Create the Database & Collection**
+### **3 Create the Database & Collection**
 Switch to the `library` database:
 ```sh
 use library
@@ -34,7 +34,7 @@ db.books.insertMany([
 ]);
 ```
 
-### **4️ Retrieve Data**
+### **4 Retrieve Data**
 Retrieve all books:
 ```sh
 db.books.find().pretty()
@@ -48,7 +48,7 @@ Find books published after 2000:
 db.books.find({ publishedYear: { $gt: 2000 } }).pretty()
 ```
 
-### **5️ Update Data**
+### **5 Update Data**
 Update the `publishedYear` of a specific book:
 ```sh
 db.books.updateOne({ ISBN: "1234567890" }, { $set: { publishedYear: 2025 } })
@@ -58,7 +58,7 @@ Add a new field `rating` to all books with a default value of `5`:
 db.books.updateMany({}, { $set: { rating: 5 } })
 ```
 
-### **6️ Delete Data**
+### **6 Delete Data**
 Delete a book by its `ISBN`:
 ```sh
 db.books.deleteOne({ ISBN: "1122334455" })
@@ -68,7 +68,7 @@ Remove all books of a particular genre:
 db.books.deleteMany({ genre: "AI" })
 ```
 
-### **7️ Data Aggregation**
+### **7 Data Aggregation**
 Find the total number of books per genre:
 ```sh
 db.books.aggregate([{ $group: { _id: "$genre", count: { $sum: 1 } } }])
@@ -82,7 +82,7 @@ Identify the top-rated book:
 db.books.find().sort({ rating: -1 }).limit(1)
 ```
 
-### **8️ Indexing**
+### **8 Indexing**
 Create an index on the `author` field:
 ```sh
 db.books.createIndex({ author: 1 })
